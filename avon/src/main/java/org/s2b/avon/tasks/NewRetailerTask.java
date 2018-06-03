@@ -1,8 +1,6 @@
 package org.s2b.avon.tasks;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.s2b.avon.appobjects.NewRetailerAppObject;
 

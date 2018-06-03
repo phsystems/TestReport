@@ -1,20 +1,17 @@
 package org.s2b.avon.testcases;
 
 import java.io.File;
-import java.io.IOException;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.s2b.avon.framework.Drives;
 import org.s2b.avon.framework.ScreenShot;
 import org.s2b.avon.tasks.HomeTask;
 import org.s2b.avon.tasks.LoginTask;
-import org.s2b.avon.verificationpoints.LoginVerificationPoint;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -24,17 +21,15 @@ public class LoginTestCase {
 	private WebDriver driver;
 	private HomeTask homePage;
 	private LoginTask logintask;
-	private LoginVerificationPoint verificationPoint;
 	ExtentReports extent;
 	ExtentTest logger;
 
-	@Before
+	@BeforeMethod
 	public void setUp() {
 		
 		this.driver = Drives.getFirefoxDriver();
-		homePage = new HomeTask(driver);
-		logintask = new LoginTask(driver);
-		verificationPoint = new LoginVerificationPoint(driver);
+		setHomePage(new HomeTask(driver));
+		setLogintask(new LoginTask(driver));
 	}
 	@BeforeTest
 	public void startTest() {
@@ -48,7 +43,7 @@ public class LoginTestCase {
 
 	@Test
 	public void passTest(){
-		driver.get("http://www.avon.com.br/");
+		driver.get("http://ww.av/");
 		driver.manage().window().maximize();
 		logger = extent.startTest("para ser home avon");
 		logger.log(LogStatus.INFO, "The website has started.", ScreenShot.capture(driver));
@@ -63,12 +58,6 @@ public class LoginTestCase {
 
 		//Reports.log(LogStatus.INFO, "Dados inseridos no formulario.", ScreenShot.capture(driver));
 
-		try {
-			verificationPoint.checkInvalidLoginMessage();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	@AfterMethod
 	 public void getResult(ITestResult result){
@@ -81,11 +70,23 @@ public class LoginTestCase {
 	 extent.endTest(logger);
 	
 	}
-	@After
+	@AfterMethod
 	public void tearDown() {
-		extent.flush();
-		extent.close();
+		this.extent.flush();
+		this.extent.close();
 		this.driver.quit();
+	}
+	public HomeTask getHomePage() {
+		return homePage;
+	}
+	public void setHomePage(HomeTask homePage) {
+		this.homePage = homePage;
+	}
+	public LoginTask getLogintask() {
+		return logintask;
+	}
+	public void setLogintask(LoginTask logintask) {
+		this.logintask = logintask;
 	}
 
 }

@@ -1,9 +1,7 @@
 package org.s2b.avon.tasks;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import org.s2b.avon.appobjects.*;
+import org.s2b.avon.appobjects.LoginAppObject;
 
 public class LoginTask {
 private LoginAppObject login;
