@@ -10,8 +10,9 @@ private LoginAppObject login;
 		this.login = new LoginAppObject(driver);
 	}
 	public void fillForm(String userName, String password){
-				
+		login.getUserNameTextField().click();		
 		login.getUserNameTextField().sendKeys(userName);
+		login.getPasswordTextField().click();
 		login.getPasswordTextField().sendKeys(password);
 		}
 	public void toRegister(){

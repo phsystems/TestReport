@@ -3,15 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="org.s2b.avon.testcases.LoginTestCase">
+      <class name="org.s2b.avon.testcases.ProdutoTesteCase">
         <methods>
-          <include name="setUp"/>
           <include name="passTest"/>
-          <include name="tearDown"/>
-          <include name="startTest"/>
+          <include name="start"/>
           <include name="getResult"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- org.s2b.avon.testcases.LoginTestCase -->
+      </class> <!-- org.s2b.avon.testcases.ProdutoTesteCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
