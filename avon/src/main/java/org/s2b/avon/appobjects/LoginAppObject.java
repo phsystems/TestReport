@@ -6,21 +6,21 @@ import org.openqa.selenium.WebElement;
 
 public class LoginAppObject {
 
-		private WebDriver driver;
-			
-			public LoginAppObject(WebDriver driver){
-				this.driver = driver;
-			}
+	private WebDriver driver;
 
-			public WebElement getUserNameTextField(){		
-				return driver.findElement(By.name("userName"));
-			}
-			
-			public WebElement getPasswordTextField(){		
-				return driver.findElement(By.id("pwd"));
-			}
-			
-			public WebElement getRegisterButton(){
-				return driver.findElement(By.id("loginBtn"));
-			}
+	public LoginAppObject(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public WebElement getUserNameTextField() {
+		return driver.findElement(By.name("userName"));
+	}
+
+	public WebElement getPasswordTextField() {
+		return driver.findElement(By.id("pwd"));
+	}
+
+	public WebElement getRegisterButton() {
+		return driver.findElement(By.id("loginBtn"));
+	}
 }

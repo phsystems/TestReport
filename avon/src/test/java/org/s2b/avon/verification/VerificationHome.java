@@ -17,27 +17,18 @@ public class VerificationHome {
 	}
 
 	public void checkHomeMessage() {
-			
-	 if (this.driver.getTitle().contains("Bem-Vindo(a) Revendedor(a)")) {
-	 System.out.println("Encontrou");
-	 try {
-		Reports.log(LogStatus.PASS, "Encontrou", ScreenShot.capture(driver));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+
+		if (this.driver.getTitle().contains("Bem-Vindo(a) Revendedor(a)")) {
+			System.out.println("Encontrou");
+			Reports.log(LogStatus.PASS, "Encontrou", ScreenShot.capture(driver));
+
+		} else {
+			Reports.log(LogStatus.PASS, "Encontrou", ScreenShot.capture(driver));
+		}
+		System.out.println("Não encontrou");
 	}
-	 } else {
-	 try {
-		Reports.log(LogStatus.PASS, "Encontrou", ScreenShot.capture(driver));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	 }
-	 System.out.println("Não encontrou");
-	 }
-	//também funcionaria da forma abaixo
-	//final String expectedMessage = "Bem-Vindo(a) Revendedor(a)";
-	//assertTrue(this.driver.getTitle().contains(expectedMessage));
+	// também funcionaria da forma abaixo
+	// final String expectedMessage = "Bem-Vindo(a) Revendedor(a)";
+	// assertTrue(this.driver.getTitle().contains(expectedMessage));
 
 }
