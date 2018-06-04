@@ -35,7 +35,7 @@ public class ProdutoTesteCase {
 	
 	@AfterMethod
 	 public void getResult(ITestResult result){
-		Reports.Result(result);
+		// Reports.Result(result);
 	}
 	@AfterClass
 	public void tearDown() {

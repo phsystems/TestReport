@@ -1,109 +1,68 @@
 package org.s2b.avon.testcases;
 
-
 import static org.testng.Assert.assertEquals;
-
-import java.io.IOException;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.s2b.avon.framework.Drives;
-import org.s2b.avon.framework.Reports;
-import org.s2b.avon.framework.ScreenShot;
-import org.s2b.avon.tasks.HomeTask;
-import org.s2b.avon.tasks.LoginTask;
-import org.s2b.avon.verification.VerificationHome;
-import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.LogStatus;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.s2b.avon.framework.Drives;
+import org.s2b.avon.framework.Reports;
+import org.s2b.avon.framework.ScreenShot;
+import org.s2b.avon.tasks.LoginTask;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
 public class LoginTestCase {
+
 	private WebDriver driver;
-	private HomeTask homePage;
-	private LoginTask logintask;
-	private VerificationHome verificationhome;
-	public LoginTask getLogintask() {
-		return logintask;
-	}
+	private LoginTask loginPage;
 
-	public void setLogintask(LoginTask logintask) {
-		this.logintask = logintask;
-	}
-
-	public HomeTask getHomePage() {
-		return homePage;
-	}
-
-	public void setHomePage(HomeTask homePage) {
-		this.homePage = homePage;
-	}
-
-	@BeforeTest
+	@BeforeClass
 	public void setUp() {
-		
-		Reports.startTest("Login");
-		
-		this.driver = Drives.getFirefoxDriver();
-	
-	}
-	@Test
-	public void AccessLoginTest(){
-		
-		driver.get("https://www.avoncomigo.avon.com.br/widget/avonwg2/#/login");
-		driver.manage().window().maximize();
-		Assert.assertEquals ("Bem-Vindo(a) Revendedor(a)", driver.getTitle());
-		try {
-			Reports.log(LogStatus.INFO, "Pagina de Login", ScreenShot.capture(driver));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		verificationhome.checkHomeMessage();
-	
-		Reports.close();
-	}
-	@Test
-	public void HomeTest(){
-		driver.get("http://www.avon.com.br/");
-		driver.manage().window().maximize();
-		try {
-			Reports.log(LogStatus.INFO, "Pagina de Inicial", ScreenShot.capture(driver));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		this.homePage.accessRegistrationPage();
-		Reports.close();
-	}
-	
-	@Test
-	public void LoginTest(){
-		
-		driver.get("https://www.avoncomigo.avon.com.br/widget/avonwg2/#/login");
 
-		logintask.fillForm("65846980", "6965fi");
-		try {
-			Reports.log(LogStatus.INFO, "Inserção dados Usuario e Senha", ScreenShot.capture(driver));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		assertEquals("hello", driver.findElement(By.cssSelector("#btn-profile > span.hello")));
-				}
-	@AfterMethod
-	 public void getResult(ITestResult result){
-		Reports.Result(result);
+		// Inicializa componentes
+		this.driver = Drives.getFirefoxDriver();
+		this.loginPage = new LoginTask(this.driver);
+
+		// Cria um novo report para este test case
+		Reports.startTest("Login");
+
+		// Inicializa em tela maximizada
+		this.driver.manage().window().maximize();
 	}
+
+	@Test
+	public void loginTest() {
+
+		// Navega para pagina de login
+		this.loginPage.navigateToPage();
+
+		Reports.log(LogStatus.INFO, "Pagina de Login", ScreenShot.capture(driver));
+
+		// Preenche formulario de login
+		this.loginPage.fillForm("65846980", "6965fi");
+
+		Reports.log(LogStatus.INFO, "Inserção dados Usuario e Senha", ScreenShot.capture(driver));
+
+		// Submit dados de login
+		this.loginPage.toRegister();
+
+		// Aguarda login finalizar e a pagina de profile ser aparecer
+		By userProfileSelector = By.cssSelector("#btn-profile > span.helloName");
+		new WebDriverWait(driver, 10)
+			.until(ExpectedConditions.visibilityOfElementLocated(userProfileSelector));
+
+		// Verificacao 
+		assertEquals("LETICIA", driver.findElement(userProfileSelector).getText());
+	}
+
 	@AfterClass
 	public void tearDown() {
 		Reports.close();
 		this.driver.quit();
 	}
 }
-
-
