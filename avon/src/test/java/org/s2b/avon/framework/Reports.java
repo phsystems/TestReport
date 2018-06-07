@@ -21,7 +21,7 @@ public class Reports {
 	public static void create(String title, String description) {
 		extent = new ExtentReports(System.getProperty("user.dir") + REPORT_FILE_PATH, false);
 		extent.addSystemInfo("Host Name", "Avon.com"); 
-		extent.addSystemInfo("Project", "");
+		extent.addSystemInfo("Project", "Avon");
 		extent.addSystemInfo("User Name", "Fabio Kopezinski e Pedro Henrique");
 		extent.loadConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
 	}

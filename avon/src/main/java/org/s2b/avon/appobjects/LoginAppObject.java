@@ -23,4 +23,10 @@ public class LoginAppObject {
 	public WebElement getRegisterButton() {
 		return driver.findElement(By.id("loginBtn"));
 	}
+	public WebElement getProductTextfield() {
+		return driver.findElement(By.cssSelector("#btn-profile > span.helloName"));
+	}
+	public WebElement geterroMensTextField() {
+		return driver.findElement(By.cssSelector(".avowng-forgotpwd"));
+	}
 }

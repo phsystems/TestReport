@@ -1,17 +1,11 @@
 package org.s2b.avon.testcases;
 
-import static org.testng.Assert.assertEquals;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.s2b.avon.appobjects.LoginAppObject;
 import org.s2b.avon.framework.Drives;
 import org.s2b.avon.framework.Reports;
 import org.s2b.avon.framework.ScreenShot;
 import org.s2b.avon.tasks.LoginTask;
-import org.s2b.avon.verification.VerificationHome;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -25,19 +19,21 @@ public class LoginTestCase {
 
 	public static Object[][] credentials() {
 
-		return new Object[][] { { "54859635", "5847ho"}, { "65846980", "6965gi"}, { "89321457", "6965fi" },
-				{ "65846980", "6569fi"} };
+		return new Object[][] { { "65846980", "6965FiFi" } };
 
 	}
 
 	private WebDriver driver;
 	private LoginTask loginPage;
+	private LoginAppObject loginAppObject;
+
 	@BeforeClass
 	public void setUp() {
 
 		// Inicializa componentes
 		this.driver = Drives.getFirefoxDriver();
 		this.loginPage = new LoginTask(this.driver);
+		this.loginAppObject = new LoginAppObject(this.driver);
 
 		// Cria um novo report para este test case
 		Reports.startTest("Login");
@@ -49,47 +45,51 @@ public class LoginTestCase {
 	@Test(dataProvider = "Authentication")
 	public void loginTest(String user, String pwd) throws InterruptedException {
 
-		// Navega para pagina de login 
+		// Navega para pagina de login
 		this.loginPage.navigateToPage();
-
-		Reports.log(LogStatus.PASS, "Pagina de Login", ScreenShot.capture(driver));
-
+		
 		// Preenche formulario de login
 		this.loginPage.fillForm(user, pwd);
 
 		Reports.log(LogStatus.PASS, "Inserção dados Usuario e Senha", ScreenShot.capture(driver));
-
+		Thread.sleep(2000);
 		// Submit dados de login
 		this.loginPage.toRegister();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
+
+ 
 		
-		final String expectedMessage = "Bem-vindo à Avon Campanha 10";
-		By userProfileSelector = By.cssSelector("#btn-profile > span.helloName");
-		new WebDriverWait(driver, 10)
-			.until(ExpectedConditions.visibilityOfElementLocated(userProfileSelector));
+		String expectedMessage = "LETICIA";
+		String mensErro = "Esqueceu sua senha?";
+		String userProfileSelector = this.loginAppObject.getProductTextfield().getText().toString();
+		String mensErroPwd = this.loginAppObject.geterroMensTextField().getText().toString();
+		System.out.println(expectedMessage);
+		System.out.println(userProfileSelector);
+		System.out.println(mensErroPwd);
+		System.out.println(mensErro);
+		
+		
+		
 
-		// Verificacao 
-		assertEquals(expectedMessage, driver.findElement(userProfileSelector).getText());
-
-		final String expectedMessage = "Bem-vindo à Avon Campanha 10";
-		if (this.driver.getTitle().contains(expectedMessage)) {
-			By userProfileSelector = By.cssSelector("#btn-profile > span.helloName");
-			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(userProfileSelector));
-
-			assertEquals("LETICIA", driver.findElement(userProfileSelector).getText());
-
+		if (userProfileSelector.equals(expectedMessage)){
+			
+			
 			Reports.log(LogStatus.PASS, "Pagina Revendedor", ScreenShot.capture(driver));
 			Thread.sleep(2000);
+
 			System.out.println("Encontrou");
 
 			Reports.log(LogStatus.PASS, "Encontrou", ScreenShot.capture(driver));
 
-		} else {
+		 }
+		if (mensErro.equals(mensErroPwd)){
 			Reports.log(LogStatus.FAIL, "Não Encontrou", ScreenShot.capture(driver));
+			
+			System.out.println("Não encontrou");
 		}
-		System.out.println("Não encontrou"); 
-	 
-	}
+
+
+}
 
 	@AfterClass
 	public void tearDown() {
