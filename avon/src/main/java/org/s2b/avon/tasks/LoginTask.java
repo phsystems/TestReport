@@ -4,9 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.s2b.avon.appobjects.LoginAppObject;
 
 public class LoginTask {
-
 	public static final String LOGIN_URL = "https://www.avoncomigo.avon.com.br/widget/avonwg2/#/login";
-
 	private LoginAppObject login;
 	private WebDriver driver;
 
@@ -22,7 +20,7 @@ public class LoginTask {
 		login.getPasswordTextField().click();
 		login.getPasswordTextField().clear();
 		login.getPasswordTextField().sendKeys(password);
-	}
+	} 
 
 	public void toRegister() {
 		login.getRegisterButton().click();

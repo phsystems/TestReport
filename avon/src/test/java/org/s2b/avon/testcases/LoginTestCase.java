@@ -32,9 +32,6 @@ public class LoginTestCase {
 
 	private WebDriver driver;
 	private LoginTask loginPage;
-	private LoginAppObject loginappobject;
-	private VerificationHome verificationPoin;
-
 	@BeforeClass
 	public void setUp() {
 
@@ -65,6 +62,14 @@ public class LoginTestCase {
 		// Submit dados de login
 		this.loginPage.toRegister();
 		Thread.sleep(2000);
+		
+		final String expectedMessage = "Bem-vindo à Avon Campanha 10";
+		By userProfileSelector = By.cssSelector("#btn-profile > span.helloName");
+		new WebDriverWait(driver, 10)
+			.until(ExpectedConditions.visibilityOfElementLocated(userProfileSelector));
+
+		// Verificacao 
+		assertEquals(expectedMessage, driver.findElement(userProfileSelector).getText());
 
 		final String expectedMessage = "Bem-vindo à Avon Campanha 10";
 		if (this.driver.getTitle().contains(expectedMessage)) {
@@ -82,7 +87,7 @@ public class LoginTestCase {
 		} else {
 			Reports.log(LogStatus.FAIL, "Não Encontrou", ScreenShot.capture(driver));
 		}
-		System.out.println("Não encontrou");
+		System.out.println("Não encontrou"); 
 	 
 	}
 

@@ -79,18 +79,20 @@ public class ProdutoTesteCase {
 
 		this.produtotask.searchProduto();
 
-		Thread.sleep(7000);
+		Thread.sleep(4000);
 
 		// String expectedMessage = produto;
 		Thread.sleep(1000);
+		
+		String Test = this.produtoAppObject.getFillTextProd().getText().toString();
 
-		String userProfileSelector = this.produtoAppObject.getFillTextProd().getText().toString();
+		//String userProfileSelector = this.produtoAppObject.getFillTextProd().getText().toString();
 		
-		
+		 
 		System.out.println(produto);
-		System.out.println(userProfileSelector);
+		System.out.println(Test);
 
-		if (produto.equals(userProfileSelector)) {
+		if (produto.equals(Test)) {
 			Reports.log(LogStatus.PASS, "Produto Correto", ScreenShot.capture(driver));
 
 			System.out.println("Produto Correto");

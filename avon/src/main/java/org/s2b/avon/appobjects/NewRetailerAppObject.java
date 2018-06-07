@@ -10,7 +10,7 @@ public class NewRetailerAppObject {
 		public NewRetailerAppObject(WebDriver driver) {
 			this.driver = driver;
 		}
-		public WebElement getFirstNameTextField() {
+		public WebElement getFirstNameTextField() { 
 			return driver.findElement(By.name("firstName"));
 		}
 		public WebElement getlastNameeTextField() {
@@ -40,12 +40,7 @@ public class NewRetailerAppObject {
 		public WebElement getCellPhoneOneTextField() {
 			return driver.findElement(By.name("mobPhoneTwo"));
 		}
-		public WebElement getChoiceTime() {
-			return driver.findElement(By.name("prefTime"));
-		}	
-		public WebElement getChoiceTimeComboBox() {
-			return driver.findElement(By.name("prefTime"));
-		}
+	
 		public WebElement getCEPTextField() {
 			return driver.findElement(By.name("postcode"));
 		}
@@ -66,7 +61,7 @@ public class NewRetailerAppObject {
 			return driver.findElement(By.name("strNeighborhood"));
 		}
 		public WebElement getTermAndConditions() {
-			return driver.findElement(By.name("terms"));
+			return driver.findElement(By.cssSelector("body > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div > form > table > tbody > tr > td > table > tbody > tr:nth-child(3) > td > table.font_12 > tbody > tr.body > td > table > tbody > tr > td > input[type=\"checkbox\"]:nth-child(2)"));
 		}	
 		public WebElement getCreateButton() {
 			return driver.findElement(By.cssSelector("body > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div > form > table > tbody > tr > td > table > tbody > tr:nth-child(7) > td > table > tbody > tr > td:nth-child(3) > a > button"));
