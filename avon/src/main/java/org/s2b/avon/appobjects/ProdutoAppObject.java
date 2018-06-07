@@ -6,15 +6,23 @@ import org.openqa.selenium.WebElement;
 
 public class ProdutoAppObject {
 	private WebDriver driver;
-	
-	public ProdutoAppObject(WebDriver driver){
+
+	public ProdutoAppObject(WebDriver driver) {
 		this.driver = driver;
 	}
-		
-		public WebElement getSeachProduto(){
-			return this.driver.findElement(By.id("SimpleSearchForm_SearchTerm"));
-		}
-		public WebElement getSeachProdutoButton() {
-			return this.driver.findElement(By.cssSelector("#searchBox > a"));
-		}
+
+	public WebElement getSeachClick() { 
+		return this.driver.findElement(By.id("searchBox")); 
+	}
+
+	public WebElement getSeachProduto() { 
+		return this.driver.findElement(By.name("searchTerm"));
+	}
+
+	public WebElement getSeachProdutoButton() {
+		return this.driver.findElement(By.cssSelector(".submitButton"));
+	}
+	public WebElement getFillTextProd() {
+		return this.driver.findElement(By.cssSelector("#widget_breadcrumb > ul > li.current"));
+	}
 }

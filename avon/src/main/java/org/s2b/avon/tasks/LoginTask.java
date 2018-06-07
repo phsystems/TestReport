@@ -17,8 +17,10 @@ public class LoginTask {
 
 	public void fillForm(String userName, String password) {
 		login.getUserNameTextField().click();
+		login.getUserNameTextField().clear();
 		login.getUserNameTextField().sendKeys(userName);
 		login.getPasswordTextField().click();
+		login.getPasswordTextField().clear();
 		login.getPasswordTextField().sendKeys(password);
 	}
 

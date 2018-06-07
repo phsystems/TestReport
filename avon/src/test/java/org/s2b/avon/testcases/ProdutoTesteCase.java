@@ -1,42 +1,120 @@
 package org.s2b.avon.testcases;
 
 import org.openqa.selenium.WebDriver;
+import org.s2b.avon.appobjects.ProdutoAppObject;
 import org.s2b.avon.framework.Drives;
 import org.s2b.avon.framework.Reports;
+import org.s2b.avon.framework.ScreenShot;
 import org.s2b.avon.tasks.LoginTask;
 import org.s2b.avon.tasks.ProdutoTask;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 public class ProdutoTesteCase {
+
+	@DataProvider(name = "Authentication")
+
+	public static Object[][] credentials() {
+
+		return new Object[][] { { "786641", "Presente Encanto Seducao" },
+				{ "400430", "Renew Reversalist Dia Creme Anti-Idade FPS 25 50 g" }
+				/*
+				 * { "786641", "Presente Encanto Seducao" }, { "786480",
+				 * "Presente Encanto Surpreendente" }, { "527609",
+				 * "CT Batom Efeito Gloss Coral Diva" }, { "527614",
+				 * "CT Batom Efeito Gloss Nude Do Poder" }, { " 527586",
+				 * "CT Batom Efeito Gloss Rosa Carão" }, { " 527620",
+				 * "CT Batom Efeito Gloss Vermelho Magia" }, { " 527635",
+				 * "CT Batom Efeito Gloss Roxo Lacrador" }, { "786433",
+				 * "Presente Color Trend Amora" }, { "786412", "Presente Color Trend Melancia"
+				 * }, { "527079",
+				 * "Clearskin Combate Espinhas - Loção Tonica Facial Adstringente 200ml" }, {
+				 * " 527042", "Clearskin Combate Espinhas Gel Facial Secativo 15g" }, {
+				 * " 440909", "Renew Ultimate Multiação Dia Creme Facial Antirrugas FPS 25 50 g"
+				 * }, { "524313", "Color Trend Pó Facial Compacto Porcelana" }, { "524340",
+				 * "Color Trend Pó Facial Compacto Bege Médio" }, { "524360",
+				 * "Color Trend Pó Facial Compacto FPS 10 Café Médio 7g" }, { "524355",
+				 * "Color Trend Pó Facial Compacto FPS 10 Bronze 7g" }, { "524446",
+				 * "Color Trend Pó Facial Compacto FPS 10 Tropicana Médio 7g"}
+				 */ };
+
+	}
+
 	private WebDriver driver;
-	private LoginTask logintask;
-	private ProdutoTask produto;
-	
-	
+	private ProdutoTask produtotask;
+	private LoginTask login;
+	private ProdutoAppObject produtoAppObject;
 
-	@BeforeTest
+	@BeforeClass
 	public void start() {
-		Reports.startTest("Codigo do Produto");
 		this.driver = Drives.getFirefoxDriver();
-		driver.get("https://www.avoncomigo.avon.com.br/widget/avonwg2/#/login");
-		this.logintask.fillForm("65846980", "6965fi");
-		this.logintask.toRegister();
+		this.login = new LoginTask(this.driver);
+
+		this.login.navigateToPage();
+
+		this.login.fillForm("65846980", "6965fi");
+
+		this.login.toRegister();
+
+		this.produtotask = new ProdutoTask(this.driver);
+		Reports.startTest("Codigo do Produto");
+
+		this.driver.manage().window().maximize();
 	}
 
-	@Test
-	public void passTest() {
-		this.produto.fillProduto("452587");
-		this.produto.searchProduto();
+	@Test(dataProvider = "Authentication")
+	public void passTest(String codigo, String produto) throws InterruptedException {
+
+		this.produtotask.navigateToRetailerPage();
+		Reports.log(LogStatus.INFO, "Pagina Revendendor", ScreenShot.capture(driver));
+
+		this.produtotask.fillProduto(codigo);
+		Thread.sleep(2000);
+
+		Reports.log(LogStatus.INFO, "Inserção codigo produto", ScreenShot.capture(driver));
+
+		this.produtotask.searchProduto();
+
+		Thread.sleep(7000);
+
+		// String expectedMessage = produto;
+		Thread.sleep(1000);
+
+		String userProfileSelector = this.produtoAppObject.getFillTextProd().getText().toString();
+		
+		
+		System.out.println(produto);
+		System.out.println(userProfileSelector);
+
+		if (produto.equals(userProfileSelector)) {
+			Reports.log(LogStatus.PASS, "Produto Correto", ScreenShot.capture(driver));
+
+			System.out.println("Produto Correto");
+
+		}
+		Reports.log(LogStatus.FAIL, "Produto Incorreto", ScreenShot.capture(driver));
+
+		System.out.println("Produto Incorreto");
+
+		/*
+		 * if (driver.findElement(userProfileSelector).getText() != expectedMessage) {
+		 * 
+		 * Reports.log(LogStatus.PASS, "Produto Correto", ScreenShot.capture(driver));
+		 * 
+		 * System.out.println("Produto Correto");
+		 * 
+		 * } else { Reports.log(LogStatus.FAIL, "Produto Incorreto",
+		 * ScreenShot.capture(driver));
+		 * 
+		 * System.out.println("Produto Incorreto"); }
+		 */
+
 	}
-	
-	@AfterMethod
-	 public void getResult(ITestResult result){
-		// Reports.Result(result);
-	}
+
 	@AfterClass
 	public void tearDown() {
 		Reports.close();

@@ -10,7 +10,7 @@ public class LoginAppObject {
 
 	public LoginAppObject(WebDriver driver) {
 		this.driver = driver;
-	}
+	} 
 
 	public WebElement getUserNameTextField() {
 		return driver.findElement(By.name("userName"));

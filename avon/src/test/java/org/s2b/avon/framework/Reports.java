@@ -20,15 +20,15 @@ public class Reports {
 
 	public static void create(String title, String description) {
 		extent = new ExtentReports(System.getProperty("user.dir") + REPORT_FILE_PATH, false);
-		extent.addSystemInfo("Host Name", "Avon.com");
-		extent.addSystemInfo("Environment", "Teste Codigo");
-		extent.addSystemInfo("User Name", "Fabio e Pedro Henrique");
+		extent.addSystemInfo("Host Name", "Avon.com"); 
+		extent.addSystemInfo("Project", "");
+		extent.addSystemInfo("User Name", "Fabio Kopezinski e Pedro Henrique");
 		extent.loadConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
 	}
 
 	public static void startTest(String testDescription) {
 		if (extent == null) {
-			create(DEFAULT_DESCRIPTION, testDescription);
+			create(DEFAULT_DESCRIPTION, testDescription); 
 		}
 
 		logger = extent.startTest(testDescription);
