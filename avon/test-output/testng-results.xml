@@ -1,101 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="24459" started-at="2018-06-07T16:13:33Z" finished-at="2018-06-07T16:13:57Z">
+  <suite name="Default suite" duration-ms="25107" started-at="2018-06-14T17:55:59Z" finished-at="2018-06-14T17:56:24Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="24459" started-at="2018-06-07T16:13:33Z" finished-at="2018-06-07T16:13:57Z">
-      <class name="org.s2b.avon.testcases.LoginTestCase">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:org.s2b.avon.testcases.LoginTestCase@2def7a7a]" name="setUp" is-config="true" duration-ms="10370" started-at="2018-06-07T16:13:33Z" finished-at="2018-06-07T16:13:43Z">
+    <test name="Default test" duration-ms="25107" started-at="2018-06-14T17:55:59Z" finished-at="2018-06-14T17:56:24Z">
+      <class name="org.s2b.avon.testcases.SearchRetailerTestCase">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:org.s2b.avon.testcases.SearchRetailerTestCase@4566e5bd]" name="setUp" is-config="true" duration-ms="9334" started-at="2018-06-14T17:55:59Z" finished-at="2018-06-14T17:56:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:org.s2b.avon.testcases.LoginTestCase@2def7a7a]" name="loginTest" duration-ms="11363" started-at="2018-06-07T16:13:43Z" data-provider="Authentication" finished-at="2018-06-07T16:13:55Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[65846980]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[6965FiFi]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[Unable to locate element: .avowng-forgotpwd
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
-System info: host: 'DESKTOP-RK11H6R', ip: '10.41.201.204', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 60.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 14276, moz:profile: C:\Users\Pedro Henrique\App..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: XP, platformName: XP, platformVersion: 10.0, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
-Session ID: 9f889626-7c5c-446f-ba45-030e99a4a8d8
-*** Element info: {Using=css selector, value=.avowng-forgotpwd}]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: .avowng-forgotpwd
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
-System info: host: 'DESKTOP-RK11H6R', ip: '10.41.201.204', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 60.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 14276, moz:profile: C:\Users\Pedro Henrique\App..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: XP, platformName: XP, platformVersion: 10.0, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
-Session ID: 9f889626-7c5c-446f-ba45-030e99a4a8d8
-*** Element info: {Using=css selector, value=.avowng-forgotpwd}
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-at java.lang.reflect.Constructor.newInstance(Unknown Source)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:319)
-at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:413)
-at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:311)
-at org.s2b.avon.appobjects.LoginAppObject.geterroMens(LoginAppObject.java:30)
-at org.s2b.avon.testcases.LoginTestCase.loginTest(LoginTestCase.java:65)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+        <test-method status="PASS" signature="loginTest()[pri:0, instance:org.s2b.avon.testcases.SearchRetailerTestCase@4566e5bd]" name="loginTest" duration-ms="14283" started-at="2018-06-14T17:56:08Z" finished-at="2018-06-14T17:56:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.s2b.avon.testcases.LoginTestCase@2def7a7a]" name="tearDown" is-config="true" duration-ms="2692" started-at="2018-06-07T16:13:55Z" finished-at="2018-06-07T16:13:57Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.s2b.avon.testcases.SearchRetailerTestCase@4566e5bd]" name="tearDown" is-config="true" duration-ms="1465" started-at="2018-06-14T17:56:23Z" finished-at="2018-06-14T17:56:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- org.s2b.avon.testcases.LoginTestCase -->
+      </class> <!-- org.s2b.avon.testcases.SearchRetailerTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

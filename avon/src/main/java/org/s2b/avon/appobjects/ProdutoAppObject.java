@@ -10,18 +10,16 @@ public class ProdutoAppObject {
 	public ProdutoAppObject(WebDriver driver) {
 		this.driver = driver;
 	}
-
 	public WebElement getSeachClick() { 
 		return this.driver.findElement(By.id("searchBox")); 
 	}
-
 	public WebElement getSeachProduto() { 
 		return this.driver.findElement(By.name("searchTerm"));
 	}
-
 	public WebElement getSeachProdutoButton() {
 		return this.driver.findElement(By.cssSelector(".submitButton"));
 	}
+
 	public WebElement getFillTextProd() {
 		return this.driver.findElement(By.cssSelector("#widget_breadcrumb > ul > li.current"));
 	}

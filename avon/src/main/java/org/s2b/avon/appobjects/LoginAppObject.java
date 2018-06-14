@@ -10,7 +10,7 @@ public class LoginAppObject {
 
 	public LoginAppObject(WebDriver driver) {
 		this.driver = driver;
-	} 
+	}
 
 	public WebElement getUserNameTextField() {
 		return driver.findElement(By.name("userName"));
@@ -20,13 +20,14 @@ public class LoginAppObject {
 		return driver.findElement(By.id("pwd"));
 	}
 
-	public WebElement getRegisterButton() {
+	public WebElement getRegisterButton() { // #btn-profile > span.helloName
 		return driver.findElement(By.id("loginBtn"));
 	}
+
 	public WebElement getProductTextfield() {
-		return driver.findElement(By.cssSelector("#btn-profile > span.helloName"));
+		return driver.findElement(By.cssSelector("#wrapperFooter > div.linhaFooter1 > div.boxMinhaContaFooter > h3")); 
 	}
-	public WebElement geterroMensTextField() {
-		return driver.findElement(By.cssSelector(".avowng-forgotpwd"));
+	public WebElement getErroMensTextField() {
+		return driver.findElement(By.cssSelector(".avonwg-login-heading"));
 	}
 }

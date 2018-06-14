@@ -12,7 +12,7 @@ public class LoginTask {
 		this.login = new LoginAppObject(driver);
 		this.driver = driver;
 	}
-
+ 
 	public void fillForm(String userName, String password) {
 		login.getUserNameTextField().click();
 		login.getUserNameTextField().clear();

@@ -19,7 +19,7 @@ public class VerificationHome {
 	public void checkHomeMessage() throws InterruptedException {
 		Thread.sleep(2000);
 		final String expectedMessage = "Bem-vindo à Avon Campanha 10";
-		//assertTrue(this.driver.getTitle().contains(expectedMessage));
+		assertTrue(this.driver.getTitle().contains(expectedMessage));
 		
 		
 		if (this.driver.getTitle().contains("expectedMessage")) {
@@ -31,8 +31,5 @@ public class VerificationHome {
 		}
 		System.out.println("Não encontrou");
 	}
-	// também funcionaria da forma abaixo
-	// final String expectedMessage = "Bem-Vindo(a) Revendedor(a)";
-	// assertTrue(this.driver.getTitle().contains(expectedMessage));
 
 }

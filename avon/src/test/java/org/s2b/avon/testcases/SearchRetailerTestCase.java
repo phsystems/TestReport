@@ -8,40 +8,29 @@ import org.s2b.avon.tasks.SearchTask;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import com.relevantcodes.extentreports.LogStatus;
-
-public class SearchRetailerTestCase {
-	
+public class SearchRetailerTestCase {	
 	private WebDriver driver;
-	private SearchTask searchTask;
-	
-	
+	private SearchTask searchTask;	
 	@BeforeClass
-	public void setUp() {
-		
+	public void setUp() {		
 		this.driver = Drives.getFirefoxDriver();
 		this.searchTask = new SearchTask (this.driver);
-		Reports.startTest("Pesquisa Revendedor");
-		
-		
+		Reports.startTest("Pesquisa Revendedor");		 
 	}	
 	@Test 
-	public void loginTest() throws InterruptedException {
-		
+	public void loginTest() throws InterruptedException {		
 		this.driver.get("http://www.br.avon.com/PRSuite/locator.page");
 		this.driver.manage().window().maximize();
 		Thread.sleep(2000);
-		Reports.log(LogStatus.PASS, "Pagina de Pesquisa de Revendedor", ScreenShot.capture(driver));
+		Reports.log(LogStatus.INFO, "Pagina de Pesquisa de Revendedor", ScreenShot.capture(driver));
 		
 		this.searchTask.fillCep("96700000");
 		Thread.sleep(3000);
 		Reports.log(LogStatus.INFO, "CEP Inserido", ScreenShot.capture(driver));
 		
 		Thread.sleep(2000);
-		this.searchTask.accessSearchPage();
-		
-		
+		this.searchTask.accessSearchPage();		
 	}
 	
 	@AfterClass
